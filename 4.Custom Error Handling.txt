@@ -1,0 +1,289 @@
+Custom error handling allows you to define your own exceptions to handle specific scenarios in your program. By creating custom exceptions, you can represent errors in a more descriptive and meaningful way, making your code more readable and easier to debug.
+
+1. What is Custom Error Handling?
+Custom error handling involves creating user-defined exceptions in addition to the built-in exceptions provided by a programming language. In Python, custom exceptions are created by defining a new class that inherits from the built-in Exception class or one of its subclasses.
+
+
+
+
+
+2. Why Use Custom Error Handling?
+Custom error handling provides several advantages:
+Clarity: It allows you to create exceptions that describe specific error conditions in your program.
+Granularity: You can catch specific types of custom exceptions and handle them differently based on their type.
+Extensibility: Custom exceptions can carry additional information about the error, making debugging easier.
+Separation of Concerns: It allows for a clean separation between regular program logic and error handling.
+
+
+
+
+
+
+3. How to Create Custom Exceptions in Python
+To create a custom exception, you typically:
+
+Define a new class that inherits from the Exception class.
+Optionally, add an __init__ method to initialize custom attributes.
+Here’s a simple example:
+class CustomError(Exception):
+    """A custom exception for specific error scenarios."""
+    pass
+
+# Raising a custom exception
+try:
+    raise CustomError("This is a custom error message.")
+except CustomError as e:
+    print("Caught an error:", e)
+
+
+
+
+
+
+
+4. Adding More Functionality to Custom Exceptions
+You can add custom behavior to your exception by overriding the __init__ method or adding other methods to your custom exception class. For instance, you can store additional error details or customize the error message.
+
+class InvalidAgeError(Exception):
+    """Exception raised for errors in the input age."""
+
+    def __init__(self, age, message="Age must be between 0 and 120"):
+        self.age = age
+        self.message = message
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f"{self.age} -> {self.message}"
+
+# Example usage
+def set_age(age):
+    if age < 0 or age > 120:
+        raise InvalidAgeError(age)
+
+try:
+    set_age(150)
+except InvalidAgeError as e:
+    print(e)
+
+In this example:
+The custom exception InvalidAgeError has two attributes: age and message.
+The __str__ method is overridden to provide a formatted error message.
+When the age is outside the valid range, the InvalidAgeError exception is raised.
+
+
+
+
+
+
+
+5. Where to Use try, except, else, finally, and raise
+Here’s how you can properly use these blocks in the context of custom error handling:
+
+try Block:
+Contains the code that might raise an exception (including custom exceptions).
+It starts the exception handling mechanism.
+except Block:
+
+Used to catch and handle specific exceptions.
+You can catch both built-in and custom exceptions.
+Multiple except blocks can be used to handle different exceptions differently.
+else Block:
+
+Executes if the code in the try block does not raise any exceptions.
+It's often used to perform tasks that should only happen if the try block was successful.
+finally Block:
+
+Always executes, regardless of whether an exception was raised or not.
+Commonly used for cleanup actions (e.g., closing files, releasing resources).
+raise Keyword:
+
+Used to manually raise an exception, which can be either built-in or custom.
+Can be placed inside the try, else, or even finally block, though it’s most commonly used within try or functions to signal an error condition.
+
+
+
+
+
+
+
+
+
+
+6. Examples of Custom Error Handling in Different Use Cases
+
+
+a. Validating Input with Custom Exceptions
+Suppose you want to validate a user’s age:
+class AgeValidationError(Exception):
+    """Custom exception for invalid age."""
+    pass
+def validate_age(age):
+    if age < 0 or age > 120:
+        raise AgeValidationError(f"Invalid age: {age}. Age must be between 0 and 120.")
+try:
+    user_age = int(input("Enter your age: "))
+    validate_age(user_age)
+    print("Age is valid.")
+except AgeValidationError as e:
+    print("Error:", e)
+except ValueError:
+    print("Please enter a valid number.")
+AgeValidationError is used to handle invalid age values.
+If the user enters an invalid age, the custom exception is raised, and the message is displayed.
+
+
+b. Handling Custom Exceptions for File Operations
+Custom exceptions can make file operations more descriptive:
+class FileReadError(Exception):
+    """Exception raised when reading a file fails."""
+    pass
+
+def read_file(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            content = file.read()
+            return content
+    except FileNotFoundError:
+        raise FileReadError(f"File '{file_path}' was not found.")
+    except IOError:
+        raise FileReadError(f"An error occurred while reading the file '{file_path}'.")
+try:
+    data = read_file("non_existent_file.txt")
+    print(data)
+except FileReadError as e:
+    print("Custom Error:", e)
+FileReadError is used to raise a custom exception when file operations fail.
+This separates file handling errors from other types of exceptions.
+
+
+c. Using raise in the finally Block
+While unusual, you can raise an exception in the finally block to re-throw an exception or to raise a different one.
+class NetworkError(Exception):
+    """Custom exception for network-related issues."""
+    pass
+
+try:
+    print("Attempting to connect to the server...")
+    # Simulate a network error
+    raise NetworkError("Unable to connect to the server.")
+except NetworkError as e:
+    print("Caught an error:", e)
+finally:
+    # Re-raising the same exception
+    print("Cleaning up resources...")
+    raise
+
+
+
+
+
+
+
+
+
+
+
+
+7. Best Practices for Custom Error Handling
+Inherit from the Base Exception Class
+
+Always inherit from the built-in Exception class. It ensures that your custom exception is treated as a valid exception type.
+Provide Meaningful Names
+
+Name your custom exceptions clearly to indicate the type of error. For example, DatabaseConnectionError, InvalidConfigurationError, etc.
+Use try-except Sparingly
+
+Use exception handling only when you expect an error. Avoid using it as a substitute for regular conditional checks.
+Avoid Catching All Exceptions with a General except Block
+
+Catching all exceptions (except:) is not a good practice because it can catch unintended exceptions. Always specify the exception type.
+Add Useful Attributes to Custom Exceptions
+
+If a custom exception requires additional information (e.g., error code, additional context), store them as attributes in the exception class.
+Log Exceptions
+
+Log exceptions whenever necessary, especially in production code, to track issues.
+Re-Raise Exceptions When Needed
+
+Sometimes, after handling an exception, you may want to re-raise it to let higher-level code handle it.
+try:
+    # Some code that might fail
+    raise ValueError("An example error")
+except ValueError as e:
+    print("Handling the error, but re-raising it.")
+    raise
+
+
+
+
+
+
+
+
+
+
+
+
+
+8. Comprehensive Example: Custom Error Handling for a Banking Application
+Here’s an example of how you can use custom exceptions to handle different errors in a simple banking application:
+
+class InsufficientFundsError(Exception):
+    """Exception raised for attempting to withdraw more than the available balance."""
+    pass
+
+class NegativeAmountError(Exception):
+    """Exception raised when attempting to deposit or withdraw a negative amount."""
+    pass
+
+class BankAccount:
+    def __init__(self, balance=0):
+        self.balance = balance
+
+    def deposit(self, amount):
+        if amount < 0:
+            raise NegativeAmountError("Cannot deposit a negative amount.")
+        self.balance += amount
+        print(f"Deposited: {amount}. New balance: {self.balance}.")
+
+    def withdraw(self, amount):
+        if amount < 0:
+            raise NegativeAmountError("Cannot withdraw a negative amount.")
+        if amount > self.balance:
+            raise InsufficientFundsError(f"Insufficient funds. Available balance: {self.balance}.")
+        self.balance -= amount
+        print(f"Withdrawn: {amount}. New balance: {self.balance}.")
+
+try:
+    account = BankAccount(100)
+    account.deposit(50)
+    account.withdraw(200)
+except NegativeAmountError as e:
+    print("Error:", e)
+except InsufficientFundsError as e:
+    print("Error:", e)
+finally:
+    print("Transaction complete.")
+In this example:
+InsufficientFundsError and NegativeAmountError are custom exceptions used to handle specific banking errors.
+The deposit and withdraw methods raise appropriate exceptions based on the conditions.
+The try-except block handles the exceptions gracefully.
+
+
+
+
+
+
+
+
+
+
+
+
+
+9. Summary
+Custom error handling involves creating meaningful exceptions that represent specific error conditions.
+Use the try, except, else, finally, and raise keywords effectively to manage errors.
+Follow best practices for creating, naming, and using custom exceptions.
+Custom exceptions can help make your code more readable, maintainable, and easier to debug.
+Custom error handling provides a powerful way to build robust applications that gracefully handle unexpected situations.

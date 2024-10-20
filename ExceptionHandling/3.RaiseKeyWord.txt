@@ -1,0 +1,72 @@
+*Q>is raise keyword should be used in the try block , can not we used in the except block?
+The raise keyword can be used anywhere in your code, including within a try block, except block, or even outside these blocks. Each usage serves different purposes depending on the situation.
+
+-------Using raise in Different Blocks-------
+1.Using raise in the try Block
+
+When used in the try block, raise is typically used to signal an error condition explicitly.
+You might raise an exception manually to indicate that a particular error scenario has occurred.
+try:
+    value = -10
+    if value < 0:
+        raise ValueError("Value cannot be negative.")
+except ValueError as e:
+    print("Caught an exception:", e)
+In this example, the raise keyword is used inside the try block to raise a ValueError when the value is negative.
+
+
+
+2.Using raise in the except Block
+You can use raise in the except block to re-raise an exception that was caught.
+This is useful if you want to handle the exception in some way but still let the higher-level code know that the error occurred.
+try:
+    # Code that may raise an exception
+    result = 10 / 0
+except ZeroDivisionError as e:
+    print("Handling ZeroDivisionError.")
+    raise  # Re-raises the original exception
+In this case, the raise statement in the except block re-raises the original ZeroDivisionError after handling it.
+
+
+
+3.Raising a New Exception in the except Block
+Sometimes, you might want to catch one type of exception and raise a different type of exception.
+try:
+    # Code that may cause an exception
+    file = open("non_existent_file.txt", "r")
+except FileNotFoundError:
+    # Raising a different exception with a custom message
+    raise IOError("Unable to open the specified file.")
+Here, FileNotFoundError is caught, and a new IOError is raised with a custom message.
+-------------------------------------
+
+
+
+
+
+
+------------------Using raise Outside of try-except Blocks-------------------
+The raise keyword can also be used outside of any try-except structure.
+This can be useful when defining functions that check for conditions and raise exceptions when those conditions are not met.
+def check_positive(number):
+    if number < 0:
+        raise ValueError("Number must be positive.")
+
+# Example usage
+check_positive(-5)  # Raises a ValueError outside of a try-except block
+--------------------------------------------------
+
+
+
+
+
+
+
+
+
+Summary
+The raise keyword can be used anywhere in your code, including inside try and except blocks.
+When used in the try block, it is typically to signal a specific error.
+When used in the except block, it can re-raise the caught exception or raise a different exception.
+You can also use raise outside of try-except blocks to perform custom error checking.
+The key is to use raise wherever you need to signal an error condition explicitly or propagate an exception further.

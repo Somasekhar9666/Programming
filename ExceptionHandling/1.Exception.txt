@@ -9,9 +9,23 @@ Power Outage: When there is a sudden power failure, it is an exception. The norm
 
 
 
+
+
+
+
+
+
 2. Why is it Called an Exception in Programming?
 In programming, an exception represents an unexpected event or condition that occurs during the execution of a program.
 It is called an "exception" because it disrupts the usual flow of the program. For instance, trying to divide a number by zero is not normally allowed, and thus throws an exception (ZeroDivisionError).
+
+
+
+
+
+
+
+
 
 
 3. Exception in Programming with Examples
@@ -34,6 +48,23 @@ except IndexError:
 Accessing a list index that doesn't exist triggers an IndexError. This is an exceptional situation because accessing an invalid index is not expected in normal operations.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 4. What is an Error in the Real World?
 An error is a mistake, fault, or incorrect action that leads to an undesired outcome.
 The term "error" comes from the Latin word "errare," meaning "to wander" or "to go astray." It indicates that something has gone wrong from the intended path or result.
@@ -42,9 +73,28 @@ Typos in a Document: A spelling mistake is an error that deviates from the corre
 Wrong Address: Mailing a letter to the wrong address is an error because the intended action (sending the letter) wasn't completed correctly.
 
 
+
+
+
+
+
+
+
+
 5. Why is it Called an Error in Programming?
 In programming, an error is a problem in the code that causes the program to behave unexpectedly, crash, or fail to execute.
 It is called an "error" because it represents something going astray in the code, like incorrect syntax, incorrect logic, or trying to access unavailable resources.
+
+
+
+
+
+
+
+
+
+
+
 
 
 6. Error in Programming with Examples
@@ -65,16 +115,50 @@ print(area)  # The result will be 15 instead of 50, which is incorrect.
 This is a logical error where the formula for calculating the area is incorrect.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 7. How Are Errors and Exceptions Related?
 Errors and exceptions are both forms of disruptions in the normal execution of a program, but they are managed differently.
 Errors are often due to mistakes in the code (like syntax errors or logical errors) and may not always be recoverable. For example, a syntax error needs to be fixed in the code before it can run.
 Exceptions, on the other hand, occur during program execution and can be caught and handled using exception-handling mechanisms like try-except blocks. This allows the program to recover or exit gracefully without crashing.
 
 
+
+
+
+
+
+
+
+
+
+
 8. Programming Flow with Errors and Exceptions
 Normal Flow: The program executes statements sequentially without interruptions.
 Error Flow: An unrecoverable issue (like a syntax error) prevents the program from running at all.
 Exception Flow: When an exception occurs, it disrupts the normal flow, but with exception handling, you can catch the exception and define what should happen next. This helps maintain control over the program's behavior even when things go wrong.
+
+
+
+
+
+
+
+
+
+
+
 
 
 9. Examples Showing Error vs. Exception Handling in Program Flow
@@ -94,6 +178,15 @@ except ZeroDivisionError:
 except ValueError:
     print("Invalid input. Please enter a valid number.")
 In this example, both ZeroDivisionError and ValueError are handled gracefully. If an exception occurs, the program does not crash but instead provides a meaningful message.
+
+
+
+
+
+
+
+
+
 
 
 10. Summary

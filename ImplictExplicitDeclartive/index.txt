@@ -1,0 +1,177 @@
+what are these terms :
+Declarative , imperative , implicit , explicit . 
+
+what are these in general terms , why they are called like this , give some good examples  to understnad easily , give the meanings in telugu with telugu examples , what  are these when come into programming , give some good simple examples to understsnd easilyy
+
+
+
+
+
+
+1. Declarative
+General Meaning: "Declarative" means describing what you want to happen, without specifying the exact steps to make it happen. It’s like giving instructions by focusing on the outcome rather than the process.
+
+Why It’s Called Declarative: The term "declarative" comes from the word "declare," meaning you state or declare the final result you want to achieve.
+
+
+Example:
+
+Think of declarative as saying what you want without getting into the details of how it should be done.
+
+Real-Life Example:
+    Cooking Order: You tell someone, "I want a pizza with mushrooms and cheese."
+        Here, you’ve declared what you want (a pizza with mushrooms and cheese), but you haven’t specified the steps to make it.
+    The cook will figure out the exact recipe and steps to make the pizza.
+
+Travel Planning: "I want to go to Paris."
+This specifies the destination but not the details of how to get there. You’re declaring the outcome (arriving in Paris), not the steps like booking flights or checking passports.
+
+
+
+
+Programming Example: In programming, declarative code tells what should happen but not how to do it.
+
+For example, in SQL (a declarative language), you might write:
+SELECT * FROM students WHERE grade > 90;
+
+This statement declares that you want all students with grades above 90, but it doesn't specify how the database should fetch them.
+
+JavaScript Example: React’s render() method is also declarative:
+
+const element = <h1>Hello, World!</h1>;
+ReactDOM.render(element, document.getElementById("root"));
+Here, you declare that you want to render an <h1> with "Hello, World!" inside the root div, but you don’t specify how React should do it internally.
+
+
+
+In Telugu: Meaning: "ఏమి కావాలో చెప్పడం, కాకపోతే దానిని ఎలా సాధించాలో చెప్పకపోవడం."
+
+Example: "ఈ గదిని చక్కగా సర్దండి" అని చెప్పడం. (What needs to be done: the room should look tidy; how to do it isn’t specified).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. Imperative
+General Meaning: "Imperative" means giving step-by-step instructions on how to achieve a result. You specify each action that should be taken in the order it should happen.
+
+Why It’s Called Imperative: The term comes from the word "imperative," which means giving commands or orders directly.
+
+2. Imperative
+Imperative is all about giving detailed, step-by-step instructions on how to achieve something.
+
+Real-Life Example:
+Recipe Instructions: "To make a pizza, start by preheating the oven, then prepare the dough, add sauce, place toppings, and bake for 20 minutes."
+    This is imperative because it tells you exactly how to make the pizza, step by step.
+Driving Directions: "Drive straight for two miles, turn left at the second stoplight, then take the third right."
+    Here, you’re providing specific instructions on how to get to a destination rather than just saying, "Take me to the park."
+
+
+
+
+Programming Example: In programming, imperative code specifies how something should happen. In JavaScript, for example:
+
+
+const arr = [1, 2, 3, 4, 5];
+let result = [];
+for (let i = 0; i < arr.length; i++) {
+  if (arr[i] > 2) {
+    result.push(arr[i]);
+  }
+}
+Here, you specify each step: looping through arr, checking if each item is greater than 2, and adding it to result if it is.
+
+In Telugu: Meaning: "ప్రతి దశను వివరించడం లేదా దిశానిర్దేశం ఇవ్వడం."
+
+Example: "ఈ గదిని క్లీన్ చేయడానికి ముందుగా మంచం సర్దండి, తర్వాత మెజ్ సర్దండి, ఆపై పుస్తకాలు అమర్చండి" అని చెప్పడం. (Specifies each step in detail).
+
+
+
+
+
+
+
+
+3. Explicit
+General Meaning: "Explicit" means something that is clearly stated and requires no assumptions to understand. It’s clear and direct.
+
+Why It’s Called Explicit: The term comes from the idea of something being "expressed" or clearly revealed.
+
+Explicit means something is clearly stated and leaves no room for interpretation.
+
+Real-Life Example:
+Safety Instructions: "Keep away from children."
+    This is explicit because it clearly tells you what to do (keep something out of children’s reach).
+
+Policy Statement: "This pool is closed after 8 PM."
+    This is explicit because it clearly states the rule with no assumptions or indirect meaning.
+
+Bank Notice: "Minimum balance required is $500."
+    This is explicit; it states the requirement outright.
+
+
+
+
+
+Programming Example: In programming, explicit code makes intentions clear. If you’re defining a function to add two numbers, you might name it addNumbers(a, b), which clearly states what it does:
+
+function addNumbers(a, b) {
+  return a + b;
+}
+The function name addNumbers is explicit—it tells exactly what the function does.
+
+In Telugu: Meaning: "వివరంగా చెప్పడం లేదా స్పష్టంగా ఉండటం."
+
+Example: "పదవీకాలం 12 నెలలు" అని తారీఖుల్ని వివరంగా చెప్పడం. (Gives clear, specific details).
+
+
+
+
+
+
+
+4. Implicit
+General Meaning: "Implicit" means something that is understood without being directly stated. It relies on context or prior understanding.
+
+Why It’s Called Implicit: The term comes from the idea of "implying" something, where you don’t need to state it directly.
+
+
+Implicit means something that is understood without being directly stated. It’s implied through context.
+
+Real-Life Example:
+Body Language: If someone keeps looking at their watch during a conversation, they’re implicitly signaling they might need to leave soon, even if they haven’t said it outright.
+
+Social Context: At a fancy restaurant, the dress code might be implicitly understood to be formal. It’s not written out or directly stated, but it’s understood based on context.
+
+Unspoken Rule: You’re at a library, and everyone is silent. There’s an implicit rule that people should be quiet, even if no one says, "Please be quiet."
+
+
+Programming Example: In programming, implicit behavior is when something happens automatically, without the programmer needing to specify it.
+
+For example, in JavaScript, a return statement is implicit in arrow functions with single expressions:
+const square = x => x * x;
+Here, x * x is implicitly returned.
+
+In Telugu: Meaning: "అర్ధం చేసుకోవడం, కానీ ప్రత్యక్షంగా చెప్పకపోవడం."
+
+Example: ఒకరితో "తర్వాత కలుద్దాం" అని చెప్పడం అంటే మీరు త్వరగా వెళ్ళాలనుకుంటున్నట్లు అర్థం అవుతుంది, కానీ మీరు ప్రత్యక్షంగా చెప్పలేదు. (Something implied but not directly stated).

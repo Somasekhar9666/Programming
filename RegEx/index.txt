@@ -197,3 +197,7 @@ Example:
 Summary:
 re.match(): Only checks if the pattern matches at the start of a string.
 re.compile(): Allows you to define a regex pattern once and reuse it across multiple strings.
+
+
+
+-------somasekhar

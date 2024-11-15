@@ -1,0 +1,199 @@
+1. What is a Regular Expression (Regex)?
+A regular expression is like a mini-language that allows you to specify patterns for matching text. Think of it as a formula that describes certain strings, like phone numbers, emails, or names.
+
+Imagine you're working on a project where you need to find all email addresses in a large file or validate that user input follows a specific format (like a date or phone number). Regex can help you do this efficiently.
+
+
+    Q>so you will fix one pattern "x",  and you want to find the details based on that pattern ,like same which comes under the catageory . here the "x" is called as one regualr expression ?.
+        Yes, exactly! 🎉
+
+        The "x" you're talking about is the regular expression (regex). It's the pattern you design to tell your helper (the computer) what you're looking for.
+
+        For example:
+
+        If "x" = \d+ (this pattern means "find numbers"), your helper will find all numbers in the text.
+        If "x" = [a-z]+ (this pattern means "find words with lowercase letters"), your helper will find all lowercase words.
+    So, a regular expression is just a special pattern you create to find matching text that belongs to the category you’re searching for. 😊
+
+
+
+
+
+
+
+
+
+
+
+2. Why Use Regular Expressions?
+
+Regular expressions are great for:
+    -->Validating input: Ensuring user data follows a correct format.
+    -->Searching text: Finding specific patterns in text data.
+    -->Replacing or extracting data: Editing text by finding and modifying parts of it.
+
+
+
+
+
+
+
+
+
+
+3. How to Use Regular Expressions in Python
+In Python, the re module allows us to work with regex. Here’s a quick overview of some common functions:
+
+    1.re.search(): Finds the first occurrence of a pattern in a string.
+    2.re.findall(): Returns a list of all matches in a string.
+    3.re.sub(): Replaces parts of a string that match the pattern with a new value.
+    4.re.match() checks if the pattern matches only at the start of the string.
+    5.re.compile() is used to create a regex pattern as a reusable object.
+
+
+
+
+
+
+
+
+4. Getting Started: Basic Patterns
+Here are some basic components of regular expressions. Don’t worry; we'll go through examples after this!
+
+    -->Literals: Exact characters you want to match. E.g., cat matches the word "cat".
+    -->Metacharacters: Special symbols that let you search for patterns.
+
+        .: Matches any character except newline.
+        \d: Matches any digit (0-9).
+        \w: Matches any word character (letters, digits, and underscore).
+        \s: Matches any whitespace (space, tab, newline).
+        +, *, and ?: Indicate quantities (how many times something occurs).
+
+
+
+
+
+
+
+
+
+
+
+Let’s jump into some beginner-friendly use cases and examples.
+
+Example 1: Searching for a Word in a Sentence
+Suppose you want to check if a word exists in a sentence. Here’s how to do it.
+
+        import re
+        text = "The quick brown fox jumps over the lazy dog"
+        pattern = "fox"
+        result = re.search(pattern, text)
+
+        if result:
+            print("Word found!")
+        else:
+            print("Word not found.")
+
+    This will print "Word found!" because "fox" is in the sentence.
+
+
+
+
+Example 2: Finding All Digits in a String
+Let's say you want to extract all numbers in a string. You can use \d, which matches any digit.
+
+    text = "My phone number is 123-456-7890 and my postal code is 54321."
+    numbers = re.findall(r"\d+", text)
+    print(numbers)  # Output: ['123', '456', '7890', '54321']
+Here, \d+ finds any sequence of digits, so it extracts phone and postal numbers.
+
+
+
+Example 3: Validating an Email Address
+If you need to check if an email is in a valid format (e.g., "user@example.com"), a regex can help:
+
+    email = "user@example.com"
+    pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+
+    if re.match(pattern, email):
+        print("Valid email!")
+    else:
+        print("Invalid email.")
+
+The pattern here does the following:
+    ^ and $: Ensure the match spans the entire string.
+    [a-zA-Z0-9._%+-]+: Matches the username (letters, numbers, or special characters).
+    @: Matches the "@" symbol.
+    [a-zA-Z0-9.-]+: Matches the domain name.
+    \.[a-zA-Z]{2,}: Ensures there's a dot and then at least two letters for the domain.
+
+
+
+Example 4: Replacing Text in a String
+Suppose you want to replace all numbers in a text with [NUMBER].
+
+    text = "There are 3 cats and 4 dogs."
+    new_text = re.sub(r"\d+", "[NUMBER]", text)
+    print(new_text)  # Output: "There are [NUMBER] cats and [NUMBER] dogs."
+
+Here, \d+ finds each number, and re.sub replaces them with [NUMBER].
+
+
+Example 5: Splitting a String by Whitespace
+Regex can also split a string based on patterns. For instance, to split text into words, we can use \s+, which matches any whitespace.
+    text = "Python    is    fun!"
+    words = re.split(r"\s+", text)
+    print(words)  # Output: ['Python', 'is', 'fun!']
+
+This splits the sentence, even if there are multiple spaces.
+
+
+
+
+
+
+1. re.match()
+    Purpose: re.match() checks if the pattern matches only at the start of the string.
+    Difference from re.search(): While re.search() scans the whole string and returns the first match it finds, re.match() only checks at the beginning of the string.
+Example:
+        import re
+
+        text = "Hello, world!"
+        pattern = "Hello"
+        
+        result = re.match(pattern, text)
+        print(result)  # Output: Match object (indicating "Hello" is at the start of the string)
+
+    # If we try with a different word at the start, `re.match` won't find it:
+        pattern = "world"
+        result = re.match(pattern, text)
+        print(result)  # Output: None (because "world" is not at the start)
+
+*When to Use: Use re.match() when you need to confirm that a string starts with a specific pattern.
+
+
+
+
+
+
+2. re.compile()
+    Purpose: re.compile() is used to create a regex pattern as a reusable object.
+    Why Use It: If you plan to use the same pattern multiple times in your code, re.compile() is efficient because it lets you write the pattern once, store it, and reuse it without writing re functions repeatedly.
+Example:
+        import re
+
+        pattern = re.compile(r"\d+")  # Compiles the pattern for finding digits
+
+        text1 = "I have 3 cats and 4 dogs."
+        text2 = "My phone number is 123-456-7890."
+
+    # Now we can use the compiled pattern to find digits in multiple strings
+        print(pattern.findall(text1))  # Output: ['3', '4']
+        print(pattern.findall(text2))  # Output: ['123', '456', '7890']
+
+
+*When to Use: Use re.compile() when the same pattern will be applied to multiple strings. It makes the code cleaner and can improve performance for repeated operations.
+
+Summary:
+re.match(): Only checks if the pattern matches at the start of a string.
+re.compile(): Allows you to define a regex pattern once and reuse it across multiple strings.
